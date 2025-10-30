@@ -1,0 +1,185 @@
+/* Definicje kolorów */
+:root {
+    --dark-bg: #121212;
+    --darker-bg: #0d0d0d;
+    --card-text-color: white;
+    --header-text-color: #f0f0f0;
+    --action-color: #4A90E2; 
+    --nav-active-color: #4A90E2; 
+    --nav-inactive-color: #888;
+}
+
+/* ---------------------------------- */
+/* PODSTAWOWE STYLISTYKI EKRANU */
+/* ---------------------------------- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background-color: var(--dark-bg);
+    color: var(--header-text-color);
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.app-screen {
+    max-width: 450px; 
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--darker-bg); 
+    position: relative;
+    padding-bottom: 65px; /* Wysokość dolnego paska nawigacyjnego */
+}
+
+/* ... (pozostałe style bez zmian) ... */
+
+/* ---------------------------------- */
+/* NAGŁÓWEK (Herb na górze, Dokumenty pod Herbem) */
+/* ---------------------------------- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    padding: 10px 15px 10px; 
+    position: relative;
+    /* Zwiększona wysokość, by pomieścić wszystkie elementy w pionie */
+    height: 110px; 
+}
+
+/* LEWA STRONA: Herb na górze, Dokumenty pod nim (bez zmian) */
+.header-logo.vertical {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-top: 0; 
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+
+/* ... (Logo i H1 bez zmian) ... */
+
+/* PRAWA STRONA: Akcje i Dzwonek */
+.header-actions.horizontal {
+    /* Ustawienie na pozycję statyczną dla Dzwonka */
+    display: flex;
+    flex-direction: column; /* Układ kolumnowy, by napisy były pod Dzwonkiem */
+    align-items: flex-end; 
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+}
+
+/* Ikona Dzwonka (Prawy górny róg) */
+.fa-bell {
+    font-size: 1.2rem;
+    color: var(--header-text-color);
+    margin-bottom: 70px; /* Zwiększony odstęp pod dzwonkiem, by nie nachodził na Dostosuj/Dodaj */
+}
+
+/* Teksty "Dostosuj" i "Dodaj" */
+.action-text {
+    font-size: 0.9rem;
+    color: var(--action-color); 
+    font-weight: 400;
+    cursor: pointer;
+    line-height: 1; 
+    position: absolute; /* KLUCZOWA ZMIANA: Pozycjonowanie absolutne dla precyzyjnego umieszczenia */
+    bottom: -40px; /* Pozycja, która ustawia napisy 20px nad kartą */
+}
+
+.action-text:first-child {
+    /* Pozycjonowanie pierwszego elementu - Dostosuj */
+    right: 70px; 
+    margin-right: 0; 
+}
+.action-text:nth-child(2) {
+    /* Pozycjonowanie drugiego elementu - Dodaj */
+    right: 15px;
+}
+
+/* ... (pozostałe style bez zmian) ... */
+
+
+/* ---------------------------------- */
+/* LISTA DOKUMENTÓW (KARTY) */
+/* ---------------------------------- */
+.documents-list {
+    padding: 0 15px;
+    flex-grow: 1;
+    position: relative;
+    padding-bottom: 50px; 
+    margin-top: -30px; /* Podnosimy listy kart, by napisy mogły być niżej */
+}
+
+.document-card {
+    position: relative;
+    height: 180px; 
+    border-radius: 15px;
+    padding: 20px;
+    color: var(--card-text-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden; 
+    margin-bottom: 0; 
+    /* Teraz karta jest domyślnie 20px niżej niż 'bottom: 25px' napisu, co daje 20px odstępu */
+    margin-top: 50px; /* Zwiększony odstęp, aby zostawić miejsce dla napisów Dostosuj/Dodaj */
+    z-index: 1; 
+}
+
+/* ... (pozostałe style bez zmian) ... */
+
+/* mDowód */
+.mdowod-card {
+    background: linear-gradient(135deg, #1e66c4 0%, #0a4da4 100%);
+}
+
+.document-card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    /* Używamy filtru, aby herb na karcie był biały (jak w oryginalnym mObywatelu) */
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(0,0,0,0.3)); 
+}
+
+/* ... (usunięto style dla pozostałych kart) ... */
+
+/* ---------------------------------- */
+/* DOLNY PASEK NAWIGACYJNY */
+/* ---------------------------------- */
+/* Stare style dla ikon Font Awesome - możesz je usunąć lub zostawić zakomentowane */
+/*
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+*/
+
+/* Nowe style dla Twoich ikon graficznych */
+.nav-icon {
+    width: 50px;   /* Dostosuj rozmiar ikony */
+    height: 50px;  /* Dostosuj rozmiar ikony */
+    margin-bottom: 15px; /* Zachowaj odstęp od tekstu */
+    object-fit: contain; /* Upewnij się, że obrazek jest dobrze dopasowany */
+    /* Jeśli ikony są kolorowe i chcesz je zmieniać na nieaktywne/aktywne: */
+    filter: grayscale(100%) brightness(150%) opacity(0.8); /* Dla ikon nieaktywnych (szare) */
+    transition: filter 0.2s; /* Płynne przejście */
+}
+
+.nav-item.active .nav-icon {
+    filter: none; /* Aktywne ikony wracają do pełnego koloru */
+}
+
+.nav-item.active span {
+    color: var(--nav-active-color); 
+    font-weight: 500;
+}
