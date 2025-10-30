@@ -162,16 +162,22 @@ html, body {
 
 /* ... (usunięto style dla pozostałych kart) ... */
 
-/* ---------------------------------- */
-/* DOLNY PASEK NAWIGACYJNY */
-/* ---------------------------------- */
-/* Stare style dla ikon Font Awesome - możesz je usunąć lub zostawić zakomentowane */
-/*
-.nav-item i {
-    font-size: 1.2rem;
-    margin-bottom: 3px;
+#pasek-nawigacyjny-jako-obrazek {
+    /* Pozycjonowanie i przypięcie do dołu */
+    position: fixed; /* Kluczowe: utrzymuje obrazek w tym samym miejscu podczas przewijania */
+    bottom: 0;       /* Przypina do dołu okna przeglądarki */
+    left: 0;         /* Przypina do lewej krawędzi */
+    right: 0;        /* Rozciąga do prawej krawędzi */
+    
+    /* Wymiary i dopasowanie */
+    width: 100%;     /* Zapewnia, że obrazek wypełni całą szerokość */
+    height: auto;    /* Zachowuje proporcje obrazka */
+    z-index: 100;    /* Upewnia się, że obrazek jest zawsze na wierzchu innych elementów */
+    
+    /* Opcjonalnie: Upewnij się, że nie jest za duży w kontekście Twojej aplikacji */
+    max-width: 450px; /* Użyj tej wartości, jeśli Twoja aplikacja ma ograniczoną szerokość */
+    margin: 0 auto;  /* Wyśrodkowanie, jeśli używasz max-width */
 }
-*/
 
 /* Nowe style dla Twoich ikon graficznych */
 .nav-icon {
