@@ -32,6 +32,15 @@ body, html {
     position: relative;
     padding-bottom: 65px; /* Wysokość dolnego paska nawigacyjnego */
 }
+html, body {
+  height: 100%;
+  overflow-y: hidden; /* zapobiega przewijaniu */
+}
+
+.app-screen {
+  height: 100vh; /* dokładnie wysokość ekranu */
+  overflow: hidden; /* nic nie wystaje poza ekran */
+}
 
 /* ... (pozostałe style bez zmian) ... */
 
